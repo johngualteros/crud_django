@@ -1,0 +1,9 @@
+{% extends 'partials/base.html' %} {% block title %}Create Book{% endblock %}
+{%block content %}
+<div class="card text-start">
+  <div class="card-header">
+    <h1 class="display-5 fw-bold">Add Book</h1>
+  </div>
+  <div class="card-body">{% include 'books/form.html' %}</div>
+</div>
+{% endblock %}

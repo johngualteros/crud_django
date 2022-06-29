@@ -1,0 +1,40 @@
+{% extends 'partials/base.html' %} {% block title %}Books{% endblock %} 
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <a class="btn btn-dark fw-bold rounded shadow" href="{% url 'create' %}"
+      >Add Book</a
+    >
+  </div>
+  <div class="card-body">
+    <div class="card-title text-center fw-bold display-5">books</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Image</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+        <tr>
+          <td>{{ book.id }}</td>
+          <td>{{ book.title }}</td>
+          <td>
+            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="img-fluid" height="100" width="100" />
+          </td>
+          <td>{{ book.description }}</td>
+          <td>
+            <a class="btn btn-dark fw-bold rounded shadow" href="{% url 'edit' book.id %}">Edit</a>
+            <a class="btn btn-danger fw-bold rounded shadow" href="{% url 'delete' book.id %}">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

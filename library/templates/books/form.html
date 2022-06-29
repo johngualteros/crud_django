@@ -1,0 +1,21 @@
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %} {% for camp in form %}
+  <div class="mb-3">
+    <label for="" class="form-label">{{camp.label}}</label>
+    <input
+      type="{{ camp.field.widget.input_type }}"
+      class="form-control"
+      name="{{ camp.name }}"
+      id="{{ camp.name}}"
+      aria-describedby="helpId"
+      placeholder="Enter your {{camp.label}}"
+      value="{{ camp.value | default:''}}"
+    />
+  </div>
+  <div class="col-12 help-text text-danger">{{camp.errors}}</div>
+  {% endfor %}
+  <button type="submit" class="btn btn-primary rounded shadow fw-bold">
+    Send Information
+  </button>
+  <a href="{% url 'listBooks' %}" class="btn btn-info fw-bold">cancel</a>
+</form>
